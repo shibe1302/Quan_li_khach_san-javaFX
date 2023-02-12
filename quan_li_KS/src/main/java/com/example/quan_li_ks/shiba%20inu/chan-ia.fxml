@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.quan_li_ks.main_dashboard_controller">
+   <children>
+      <CheckBox layoutX="289.0" layoutY="183.0" mnemonicParsing="false" text="CheckBox" />
+      <ComboBox layoutX="116.0" layoutY="64.0" prefWidth="150.0" />
+      <DatePicker layoutX="36.0" layoutY="188.0" />
+      <Hyperlink layoutX="212.0" layoutY="245.0" text="Hyperlink" />
+      <ChoiceBox layoutX="326.0" layoutY="77.0" prefWidth="150.0" />
+   </children>
+</AnchorPane>

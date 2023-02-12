@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="733.0" prefWidth="1174.0" stylesheets="@style_home.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.quan_li_ks.main_dashboard_controller">
+   <children>
+      <StackPane layoutY="-2.0" prefHeight="792.0" prefWidth="1092.0" AnchorPane.bottomAnchor="-57.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="26.0" AnchorPane.topAnchor="-2.0">
+         <children>
+            <AnchorPane>
+               <children>
+                  <BorderPane layoutX="38.0" layoutY="140.0" prefHeight="734.0" prefWidth="1119.0" AnchorPane.bottomAnchor="56.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-19.0" AnchorPane.topAnchor="0.0">
+                     <top>
+                        <AnchorPane prefHeight="39.0" prefWidth="1142.0" styleClass="top-form" stylesheets="@style_home.css" BorderPane.alignment="CENTER">
+                           <children>
+                              <AnchorPane fx:id="title_Drag" layoutX="6.0" onMouseDragged="#dagbar" onMousePressed="#clickbar" prefHeight="42.0" prefWidth="1118.0" styleClass="top-form" stylesheets="@style_home.css" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="-12.0" AnchorPane.topAnchor="-1.0">
+                                 <children>
+                                    <Button id="closex" fx:id="close_btn" layoutX="1130.0" layoutY="9.0" mnemonicParsing="false" onAction="#closestage1" prefHeight="24.0" prefWidth="27.0" styleClass="close1" stylesheets="@style_home.css" textFill="WHITE">
+                                       <graphic>
+                                          <FontAwesomeIcon fill="WHITE" glyphName="CLOSE" />
+                                       </graphic>
+                                    </Button>
+                                    <Button id="mini" fx:id="thu_nho_btn" layoutX="1097.0" layoutY="9.0" mnemonicParsing="false" onAction="#minimizestage" styleClass="close1" stylesheets="@style_home.css">
+                                       <graphic>
+                                          <FontAwesomeIcon fill="WHITE" glyphName="MINUS" />
+                                       </graphic>
+                                    </Button>
+                                    <FontAwesomeIcon fill="WHITE" glyphName="HOTEL" layoutX="14.0" layoutY="24.0" />
+                                    <Label layoutX="39.0" layoutY="11.0" text="PHẦN MỀM QUẢN LÍ KHÁCH SẠN - SHIBE COMPANY" textFill="WHITE" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                     </top>
+                     <left>
+                        <AnchorPane styleClass="nav-form" stylesheets="@style_home.css">
+                           <children>
+                              <AnchorPane layoutY="-33.0" prefHeight="625.0" prefWidth="228.0" stylesheets="@style_home.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <ImageView fitHeight="168.0" fitWidth="157.0" layoutX="35.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@shiba%20inu/shiba_ava.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label layoutX="84.0" layoutY="235.0" text="Xin chào" textAlignment="CENTER" textFill="WHITE">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="label_xinchao" alignment="CENTER" contentDisplay="CENTER" layoutX="1.0" layoutY="257.0" prefHeight="19.0" prefWidth="226.0" text="Lâm Trịnh" textAlignment="CENTER" textFill="#08d9d6">
+                                       <font>
+                                          <Font name="Roboto Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Button id="button1" fx:id="BangDieuKHien_BTN" alignment="BASELINE_LEFT" layoutX="35.0" layoutY="314.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="194.0" styleClass="close1" stylesheets="@style_home.css" text="   Bảng điều khiển" textFill="WHITE">
+                                       <font>
+                                          <Font name="Roboto Bold" size="14.0" />
+                                       </font>
+                                       <graphic>
+                                          <FontAwesomeIcon fill="WHITE" glyphName="DASHBOARD" />
+                                       </graphic>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                    <Button id="btn2" fx:id="PhongTrong_BTN" alignment="BASELINE_LEFT" layoutX="34.0" layoutY="360.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="194.0" styleClass="close1" stylesheets="@style_home.css" text="   Phòng trống" textFill="WHITE">
+                                       <font>
+                                          <Font name="Roboto Bold" size="14.0" />
+                                       </font>
+                                       <graphic>
+                                          <FontAwesomeIcon fill="WHITE" glyphName="CHECK" />
+                                       </graphic>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                    <Button id="btn3" fx:id="KhachHang_BTN" alignment="BASELINE_LEFT" layoutX="35.0" layoutY="406.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="194.0" styleClass="close1" stylesheets="@style_home.css" text="   Khách hàng" textFill="WHITE">
+                                       <font>
+                                          <Font name="Roboto Bold" size="14.0" />
+                                       </font>
+                                       <graphic>
+                                          <FontAwesomeIcon fill="WHITE" glyphName="USERS" />
+                                       </graphic>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                    <Label layoutX="111.0" layoutY="615.0" prefHeight="18.0" prefWidth="66.0" text="Đăng xuất" textFill="WHITE">
+                                       <font>
+                                          <Font name="Roboto Bold Italic" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Button id="logout1" fx:id="logout" alignment="CENTER" contentDisplay="CENTER" layoutX="50.0" layoutY="611.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="46.0" styleClass="log-out-btn" stylesheets="@style_home.css" textFill="WHITE">
+                                       <graphic>
+                                          <FontAwesomeIcon fill="WHITE" glyphName="SIGN_OUT" />
+                                       </graphic>
+                                    </Button>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                     </left>
+                     <center>
+                        <AnchorPane prefHeight="697.0" prefWidth="890.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <AnchorPane fx:id="bangdieukhienPanel" layoutX="126.0" layoutY="-9.0" prefHeight="697.0" prefWidth="892.0" styleClass="main-top-form" stylesheets="@style_home.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-10.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <AnchorPane layoutX="36.0" layoutY="26.0" prefHeight="116.0" prefWidth="244.0" styleClass="money" stylesheets="@style_home.css">
+                                       <children>
+                                          <FontAwesomeIcon fill="#393e46" glyphName="BED" layoutX="38.0" layoutY="65.0" size="5EM" wrappingWidth="56.9142370223999" />
+                                          <Label layoutX="38.0" layoutY="82.0" text="SỐ PHÒNG ĐƯỢC BOOK">
+                                             <font>
+                                                <Font name="Roboto Bold" size="13.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="BDK_SoPhongBook" alignment="BASELINE_RIGHT" contentDisplay="RIGHT" layoutX="160.0" layoutY="20.0" prefHeight="32.0" prefWidth="52.0" text="10" textAlignment="RIGHT" textFill="#393e46">
+                                             <font>
+                                                <Font name="Bauhaus 93" size="39.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane layoutX="319.0" layoutY="26.0" prefHeight="116.0" prefWidth="289.0" styleClass="money" stylesheets="@style_home.css">
+                                       <children>
+                                          <FontAwesomeIcon fill="#393e46" glyphName="DOLLAR" layoutX="30.0" layoutY="56.0" size="3EM" wrappingWidth="56.9142370223999" />
+                                          <Label layoutX="30.0" layoutY="84.0" text="THU NHẬP HÔM NAY">
+                                             <font>
+                                                <Font name="Roboto Bold" size="13.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="BDK_ThuNhapHomNay" alignment="BASELINE_RIGHT" contentDisplay="RIGHT" layoutX="145.0" layoutY="21.0" prefHeight="44.0" prefWidth="122.0" text="10000" textAlignment="RIGHT" textFill="#393e46">
+                                             <font>
+                                                <Font name="Bauhaus 93" size="30.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane layoutX="642.0" layoutY="26.0" prefHeight="116.0" prefWidth="267.0" styleClass="money" stylesheets="@style_home.css">
+                                       <children>
+                                          <FontAwesomeIcon fill="#393e46" glyphName="DOLLAR" layoutX="30.0" layoutY="53.0" size="3EM" wrappingWidth="56.9142370223999" />
+                                          <Label layoutX="30.0" layoutY="81.0" text="TỔNG THU NHẬP">
+                                             <font>
+                                                <Font name="Roboto Bold" size="13.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="BDK_TongThuNhap" alignment="BASELINE_RIGHT" contentDisplay="RIGHT" layoutX="116.0" layoutY="18.0" prefHeight="44.0" prefWidth="122.0" text="10000" textAlignment="RIGHT" textFill="#393e46">
+                                             <font>
+                                                <Font name="Bauhaus 93" size="30.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane layoutX="24.0" layoutY="178.0" prefHeight="490.0" prefWidth="890.0" styleClass="backgroundChart" stylesheets="@style_home.css">
+                                       <children>
+                                          <AreaChart fx:id="BDK_chart" layoutX="88.0" layoutY="14.0" prefHeight="490.0" prefWidth="893.0" styleClass="table-view" stylesheets="@style_home.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <xAxis>
+                                              <CategoryAxis side="BOTTOM" />
+                                            </xAxis>
+                                            <yAxis>
+                                              <NumberAxis side="LEFT" />
+                                            </yAxis>
+                                          </AreaChart>
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane fx:id="NhapTT_Panel" prefHeight="697.0" prefWidth="960.0" styleClass="main-top-form" stylesheets="@style_home.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-22.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <AnchorPane layoutX="22.0" layoutY="29.0" prefHeight="643.0" prefWidth="298.0" styleClass="panel" stylesheets="@style_home.css">
+                                       <children>
+                                          <Label fx:id="label_xinchao1" alignment="BASELINE_LEFT" layoutX="20.0" layoutY="89.0" prefHeight="19.0" prefWidth="88.0" text="Phòng số #" textFill="WHITE">
+                                             <font>
+                                                <Font name="Roboto Bold" size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="label_xinchao2" alignment="CENTER" contentDisplay="CENTER" layoutX="24.0" prefHeight="34.0" prefWidth="254.0" style="-fx-background-color: white; -fx-text-fill: rgb(57, 62, 70); -fx-max-height: 40px; -fx-background-radius: 20px;" text="NHẬP THÔNG TIN" textAlignment="CENTER" textFill="#d9c809">
+                                             <font>
+                                                <Font name="Roboto Bold" size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="NhapTT_phongSo" layoutX="127.0" layoutY="86.0" prefHeight="26.0" prefWidth="149.0" />
+                                          <Label fx:id="label_xinchao11" alignment="BASELINE_LEFT" layoutX="21.0" layoutY="139.0" prefHeight="19.0" prefWidth="88.0" text="Loại phòng" textFill="WHITE">
+                                             <font>
+                                                <Font name="Roboto Bold" size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <ComboBox fx:id="NhapTT_LoaiPhong" layoutX="127.0" layoutY="136.0" prefWidth="150.0" promptText="Chon loai phong" />
+                                          <Label fx:id="label_xinchao111" alignment="BASELINE_LEFT" layoutX="21.0" layoutY="190.0" prefHeight="19.0" prefWidth="88.0" text="Tình trạng" textFill="WHITE">
+                                             <font>
+                                                <Font name="Roboto Bold" size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <ComboBox fx:id="NhapTT_tinhTrang" layoutX="127.0" layoutY="187.0" onAction="#tinhtrangphong" prefWidth="150.0" promptText="chon tinh trang" />
+                                          <Label fx:id="label_xinchao12" alignment="BASELINE_LEFT" layoutX="21.0" layoutY="243.0" prefHeight="19.0" prefWidth="88.0" text="Gia tiền" textFill="WHITE">
+                                             <font>
+                                                <Font name="Roboto Bold" size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="NhapTT_thanhtien" layoutX="128.0" layoutY="240.0" prefHeight="26.0" prefWidth="149.0" />
+                                          <Button fx:id="NhapTT_btn_them" layoutX="22.0" layoutY="322.0" mnemonicParsing="false" onAction="#themDuLieu" prefHeight="30.0" prefWidth="106.0" styleClass="log-out-btn1" stylesheets="@style_home.css" text="Thêm">
+                                             <font>
+                                                <Font name="Roboto Bold" size="14.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="NhapTT_btn_capnhat" layoutX="169.0" layoutY="322.0" mnemonicParsing="false" onAction="#updateData" prefHeight="30.0" prefWidth="106.0" styleClass="log-out-btn1" stylesheets="@style_home.css" text="Cập nhật">
+                                             <font>
+                                                <Font name="Roboto Bold" size="14.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="NhapTT_btn_clear" layoutX="22.0" layoutY="362.0" mnemonicParsing="false" onAction="#xoadulieu" prefHeight="30.0" prefWidth="106.0" styleClass="log-out-btn1" stylesheets="@style_home.css" text="Clear">
+                                             <font>
+                                                <Font name="Roboto Bold" size="14.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="NhapTT_btn_xoa" layoutX="169.0" layoutY="362.0" mnemonicParsing="false" onAction="#xoadulieudatabase" prefHeight="30.0" prefWidth="106.0" styleClass="log-out-btn1" stylesheets="@style_home.css" text="Xóa">
+                                             <font>
+                                                <Font name="Roboto Bold" size="14.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="NhapTT_btn_checkin" layoutX="78.0" layoutY="452.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="142.0" styleClass="log-out-btn1" stylesheets="@style_home.css" text="CHECK-IN">
+                                             <font>
+                                                <Font name="Roboto Bold" size="14.0" />
+                                             </font>
+                                          </Button>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane layoutX="405.0" layoutY="148.0" prefHeight="200.0" prefWidth="148.0" />
+                                    <AnchorPane layoutX="322.0" layoutY="20.0" prefHeight="578.0" prefWidth="620.0" styleClass="panel" stylesheets="@style_home.css">
+                                       <children>
+                                          <TableView fx:id="NhapTT_table" layoutX="17.0" layoutY="52.0" onMouseClicked="#selectData" prefHeight="606.0" prefWidth="586.0">
+                                            <columns>
+                                              <TableColumn id="cotphong" fx:id="NhapTT_cot_phong" prefWidth="75.0" text="Phong #" />
+                                              <TableColumn fx:id="NhapTT_cot_loaiPhong" prefWidth="179.19998168945312" text="Loai phong" />
+                                                <TableColumn fx:id="NhapTT_cot_Tinhtrang" prefWidth="154.4000244140625" text="Tinh trang" />
+                                                <TableColumn fx:id="NhapTT_cot_giatien" prefWidth="175.2000732421875" text="Gia tien ($)" />
+                                            </columns>
+                                          </TableView>
+                                          <TextField fx:id="NhapTT_search" layoutX="54.0" layoutY="9.0" prefHeight="31.0" prefWidth="238.0" style="-fx-background-radius: 15px;" />
+                                          <FontAwesomeIcon fill="WHITE" glyphName="SEARCH" layoutX="20.0" layoutY="35.0" size="2EM" wrappingWidth="14.4000244140625" />
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane fx:id="KH_panel" prefHeight="697.0" prefWidth="946.0" styleClass="main-top-form" stylesheets="@style_home.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-8.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <AnchorPane layoutX="18.0" layoutY="75.0" prefHeight="200.0" prefWidth="252.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                       <children>
+                                          <TableView fx:id="KH_table_khachHang" layoutX="20.0" layoutY="62.0" prefHeight="598.0" prefWidth="887.0">
+                                            <columns>
+                                              <TableColumn fx:id="KH_cot_khachHang" prefWidth="91.20001411437988" text="Khách hàng #" />
+                                              <TableColumn fx:id="KH_cot_hovaten" prefWidth="175.99999237060547" text="Họ và tên" />
+                                                <TableColumn fx:id="KH_cot_sodienthoai" prefWidth="160.0" text="Số điện thoại" />
+                                                <TableColumn fx:id="KH_cot_thanhtoan" prefWidth="136.00003051757812" text="Thanh toán" />
+                                                <TableColumn fx:id="KH_cot_chekcin" prefWidth="172.00006103515625" text="Check-in" />
+                                                <TableColumn fx:id="KH_cot_checkout" prefWidth="145.59991455078125" text="Check-out" />
+                                            </columns>
+                                          </TableView>
+                                          <TextField fx:id="KH_search_khachhang" layoutX="24.0" layoutY="15.0" prefHeight="30.0" prefWidth="345.0" promptText="tim kiem" style="-fx-background-radius: 8px; -fx-padding: 0 0 0 40px;" />
+                                          <FontAwesomeIcon fill="#393e46" glyphName="SEARCH" layoutX="35.0" layoutY="38.0" selectionFill="#363b43" size="2em" wrappingWidth="40.685739517211914" />
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                     </center>
+                  </BorderPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>
