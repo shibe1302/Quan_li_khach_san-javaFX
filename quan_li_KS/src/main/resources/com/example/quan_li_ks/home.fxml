@@ -50,7 +50,7 @@
                      <left>
                         <AnchorPane styleClass="nav-form" stylesheets="@style_home.css">
                            <children>
-                              <AnchorPane layoutY="-33.0" prefHeight="625.0" prefWidth="228.0" stylesheets="@style_home.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <AnchorPane layoutY="-33.0" prefHeight="625.0" prefWidth="228.0" styleClass="nav-form" stylesheets="@style_home.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
                                     <ImageView fitHeight="168.0" fitWidth="157.0" layoutX="35.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -232,7 +232,7 @@
                                                 <Font name="Roboto Bold" size="14.0" />
                                              </font>
                                           </Button>
-                                          <Button fx:id="NhapTT_btn_checkin" layoutX="78.0" layoutY="452.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="142.0" styleClass="log-out-btn1" stylesheets="@style_home.css" text="CHECK-IN">
+                                          <Button fx:id="NhapTT_btn_checkin" layoutX="78.0" layoutY="452.0" mnemonicParsing="false" onAction="#checkIN" prefHeight="56.0" prefWidth="142.0" styleClass="log-out-btn1" stylesheets="@style_home.css" text="CHECK-IN">
                                              <font>
                                                 <Font name="Roboto Bold" size="14.0" />
                                              </font>
@@ -242,7 +242,7 @@
                                     <AnchorPane layoutX="405.0" layoutY="148.0" prefHeight="200.0" prefWidth="148.0" />
                                     <AnchorPane layoutX="322.0" layoutY="20.0" prefHeight="578.0" prefWidth="620.0" styleClass="panel" stylesheets="@style_home.css">
                                        <children>
-                                          <TableView fx:id="NhapTT_table" layoutX="17.0" layoutY="52.0" onMouseClicked="#selectData" prefHeight="606.0" prefWidth="586.0">
+                                          <TableView fx:id="NhapTT_table" layoutX="17.0" layoutY="52.0" onMouseClicked="#selectData" prefHeight="606.0" prefWidth="586.0" stylesheets="@style_home.css">
                                             <columns>
                                               <TableColumn id="cotphong" fx:id="NhapTT_cot_phong" prefWidth="75.0" text="Phong #" />
                                               <TableColumn fx:id="NhapTT_cot_loaiPhong" prefWidth="179.19998168945312" text="Loai phong" />

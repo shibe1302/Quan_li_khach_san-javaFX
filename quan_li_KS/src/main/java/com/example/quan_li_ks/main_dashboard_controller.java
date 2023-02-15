@@ -5,13 +5,17 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.chart.AreaChart;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.net.URL;
 import java.sql.*;
@@ -312,11 +316,11 @@ public class main_dashboard_controller implements Initializable {
 
         try{
             Alert alert ;
-            if(loai1.isEmpty()||tinhtrang1.isEmpty()||giaphong.isEmpty()||soPhong.isEmpty()){
+            if(loai1==null||tinhtrang1==null||giaphong==null||soPhong==null){
                alert = new Alert(Alert.AlertType.ERROR);
                alert.setTitle("Lỗi !");
                alert.setContentText("Vui lòng nhập đầy đủ thông tin !");
-               alert.setContentText(null);
+               alert.setHeaderText(null);
                alert.showAndWait();
             }else {
                 preparedStatement= connect.prepareStatement(sql);
@@ -383,9 +387,32 @@ public class main_dashboard_controller implements Initializable {
         }catch (Exception e){
             e.printStackTrace();
         }
-
-
-
+    }
+    public void checkIN(){
+        try{
+            Parent root = FXMLLoader.load(getClass().getResource("check-in.fxml"));
+            Stage stage1 = new Stage();
+            Scene scene= new Scene(root);
+            root.setOnMousePressed(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    x=event.getSceneX();
+                    y=event.getSceneY();
+                }
+            });
+            root.setOnMouseDragged(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    stage1.setX(event.getScreenX()-x);
+                    stage1.setY(event.getScreenY()-y);
+                }
+            });
+            stage1.initStyle(StageStyle.TRANSPARENT);
+            stage1.setScene(scene);
+            stage1.show();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
 

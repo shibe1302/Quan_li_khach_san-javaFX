@@ -187,3 +187,37 @@
   -fx-border-width: 0px 10px 0px 0px;
   -fx-border-color: #AAAAAA;
 }
+.check-in-bg{
+-fx-background-color:#393E46;
+-fx-border-color:white ;
+-fx-border-width: .4px .4x .4px .4px;
+
+}
+.textField1 {
+    -fx-background-color: white, #393E46;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 20px;
+    -fx-text-fill: white;
+    -fx-display-caret: false;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0.8, 0 0 2 0 ;
+    -fx-padding: 2 ;
+
+    -fx-alignment: center-left ;
+}
+.checkin-btn{
+	-fx-background-color:rgb(8, 217, 214);
+	-fx-background-radius:5px;
+
+}
+.checkin-btn:hover{
+ -fx-background-color:white;
+
+}
+.topformcheckin{
+	-fx-background-color: #222831;
+	-fx-border-color: white;
+	-fx-border-width: .4px .4x .4px .4px;
+
+
+}

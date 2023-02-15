@@ -20,7 +20,7 @@ public class hamMain extends Application {
     public void start(Stage stage) throws IOException {
 
         Parent root = null;
-        FXMLLoader loader = new FXMLLoader(DBultil.class.getResource("dang-nhap1.fxml"));
+        FXMLLoader loader = new FXMLLoader(DBultil.class.getResource("home.fxml"));
         root= loader.load();
         stage.setTitle("Hello!");
         Scene scene = new Scene(root);
