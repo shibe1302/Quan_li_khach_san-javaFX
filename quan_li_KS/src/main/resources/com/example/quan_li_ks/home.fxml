@@ -78,7 +78,7 @@
                                           <Cursor fx:constant="HAND" />
                                        </cursor>
                                     </Button>
-                                    <Button id="btn2" fx:id="PhongTrong_BTN" alignment="BASELINE_LEFT" layoutX="34.0" layoutY="360.0" mnemonicParsing="false" onAction="#switchform" prefHeight="46.0" prefWidth="194.0" styleClass="close1" stylesheets="@style_home.css" text="   Phòng trống" textFill="WHITE">
+                                    <Button id="btn2" fx:id="PhongTrong_BTN" alignment="BASELINE_LEFT" layoutX="34.0" layoutY="360.0" mnemonicParsing="false" onAction="#switchform" prefHeight="46.0" prefWidth="194.0" styleClass="close1" stylesheets="@style_home.css" text="   Đặt phòng" textFill="WHITE">
                                        <font>
                                           <Font name="Roboto Bold" size="14.0" />
                                        </font>
@@ -118,17 +118,17 @@
                      <center>
                         <AnchorPane prefHeight="697.0" prefWidth="890.0" BorderPane.alignment="CENTER">
                            <children>
-                              <AnchorPane fx:id="bangdieukhienPanel" layoutX="126.0" layoutY="-9.0" prefHeight="697.0" prefWidth="892.0" styleClass="main-top-form" stylesheets="@style_home.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-10.0" AnchorPane.topAnchor="0.0">
+                              <AnchorPane fx:id="bangdieukhienPanel" layoutX="126.0" layoutY="-9.0" prefHeight="697.0" prefWidth="892.0" styleClass="main-top-form" stylesheets="@style_home.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-10.0" AnchorPane.topAnchor="0.0">
                                  <children>
                                     <AnchorPane layoutX="36.0" layoutY="26.0" prefHeight="116.0" prefWidth="244.0" styleClass="money" stylesheets="@style_home.css">
                                        <children>
                                           <FontAwesomeIcon fill="#393e46" glyphName="BED" layoutX="38.0" layoutY="65.0" size="5EM" wrappingWidth="56.9142370223999" />
-                                          <Label layoutX="38.0" layoutY="82.0" text="SỐ PHÒNG ĐƯỢC BOOK">
+                                          <Label layoutX="38.0" layoutY="82.0" text="SỐ PHÒNG ĐƯỢC BOOK HÔM NAY">
                                              <font>
-                                                <Font name="Roboto Bold" size="13.0" />
+                                                <Font name="Roboto Bold" size="10.0" />
                                              </font>
                                           </Label>
-                                          <Label fx:id="BDK_SoPhongBook" alignment="BASELINE_RIGHT" contentDisplay="RIGHT" layoutX="160.0" layoutY="20.0" prefHeight="32.0" prefWidth="52.0" text="10" textAlignment="RIGHT" textFill="#393e46">
+                                          <Label fx:id="BDK_SoPhongBook" alignment="BASELINE_RIGHT" contentDisplay="RIGHT" layoutX="160.0" layoutY="20.0" prefHeight="32.0" prefWidth="52.0" text="0" textAlignment="RIGHT" textFill="#393e46">
                                              <font>
                                                 <Font name="Bauhaus 93" size="39.0" />
                                              </font>
@@ -143,7 +143,7 @@
                                                 <Font name="Roboto Bold" size="13.0" />
                                              </font>
                                           </Label>
-                                          <Label fx:id="BDK_ThuNhapHomNay" alignment="BASELINE_RIGHT" contentDisplay="RIGHT" layoutX="145.0" layoutY="21.0" prefHeight="44.0" prefWidth="122.0" text="10000" textAlignment="RIGHT" textFill="#393e46">
+                                          <Label fx:id="BDK_ThuNhapHomNay" alignment="BASELINE_RIGHT" contentDisplay="RIGHT" layoutX="58.0" layoutY="21.0" prefHeight="44.0" prefWidth="209.0" text="0" textAlignment="RIGHT" textFill="#393e46">
                                              <font>
                                                 <Font name="Bauhaus 93" size="30.0" />
                                              </font>
@@ -158,7 +158,7 @@
                                                 <Font name="Roboto Bold" size="13.0" />
                                              </font>
                                           </Label>
-                                          <Label fx:id="BDK_TongThuNhap" alignment="BASELINE_RIGHT" contentDisplay="RIGHT" layoutX="116.0" layoutY="18.0" prefHeight="44.0" prefWidth="122.0" text="10000" textAlignment="RIGHT" textFill="#393e46">
+                                          <Label fx:id="BDK_TongThuNhap" alignment="BASELINE_RIGHT" contentDisplay="RIGHT" layoutX="60.0" layoutY="18.0" prefHeight="44.0" prefWidth="178.0" text="0" textAlignment="RIGHT" textFill="#393e46">
                                              <font>
                                                 <Font name="Bauhaus 93" size="30.0" />
                                              </font>
@@ -179,7 +179,7 @@
                                     </AnchorPane>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane fx:id="NhapTT_Panel" prefHeight="697.0" prefWidth="960.0" styleClass="main-top-form" stylesheets="@style_home.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-22.0" AnchorPane.topAnchor="0.0">
+                              <AnchorPane fx:id="NhapTT_Panel" prefHeight="697.0" prefWidth="960.0" styleClass="main-top-form" stylesheets="@style_home.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-22.0" AnchorPane.topAnchor="0.0">
                                  <children>
                                     <AnchorPane layoutX="22.0" layoutY="29.0" prefHeight="643.0" prefWidth="298.0" styleClass="panel" stylesheets="@style_home.css">
                                        <children>
@@ -250,7 +250,7 @@
                                                 <TableColumn fx:id="NhapTT_cot_giatien" prefWidth="175.2000732421875" text="Gia tien ($)" />
                                             </columns>
                                           </TableView>
-                                          <TextField fx:id="NhapTT_search" layoutX="54.0" layoutY="9.0" onKeyTyped="#roomsearch" prefHeight="31.0" prefWidth="238.0" style="-fx-background-radius: 15px;" />
+                                          <TextField fx:id="NhapTT_search" layoutX="54.0" layoutY="9.0" prefHeight="31.0" prefWidth="238.0" style="-fx-background-radius: 15px;" />
                                           <FontAwesomeIcon fill="WHITE" glyphName="SEARCH" layoutX="20.0" layoutY="35.0" size="2EM" wrappingWidth="14.4000244140625" />
                                        </children>
                                     </AnchorPane>

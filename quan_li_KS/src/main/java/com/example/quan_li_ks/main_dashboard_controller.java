@@ -14,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.AreaChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
@@ -24,6 +25,7 @@ import javafx.stage.StageStyle;
 import java.net.URL;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -449,24 +451,110 @@ public class main_dashboard_controller implements Initializable {
         sortedList2.comparatorProperty().bind(NhapTT_table.comparatorProperty());
         NhapTT_table.setItems(sortedList2);
     }
+    public void customersearch1(){
+        FilteredList<custommer_data> filter2 =  new FilteredList<>(listcd, b->true);
+        KH_search_khachhang.textProperty().addListener(((observableValue, s1, t2) -> {
+            filter2.setPredicate(predick1->{
+                System.out.println(s1);
+                System.out.println(t2);
+                if(t2==null&&s1.isEmpty()){
+                    return true;
+                }
+                String searchkey1= t2.toLowerCase();
+                if(predick1.getMakhach().toString().indexOf(searchkey1)!=-1){
+                    return true;
+                } else if (predick1.getHoten().indexOf(searchkey1)!=-1) {
+                    return true;
+
+                } else if (predick1.getSdt().toLowerCase().contains(searchkey1)) {
+                    return true;
+                } else if (predick1.getVao1().toString().contains(searchkey1)) {
+                    return true;
+                }else return false;
+
+            });
+        }));
+
+        SortedList<custommer_data> sortedList2= new SortedList<>(filter2);
+        sortedList2.comparatorProperty().bind(KH_table_khachHang.comparatorProperty());
+        KH_table_khachHang.setItems(sortedList2);
+    }
 
 
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        countbooktoday();
+        daboardchart();
+        HienThiThuNhapAllTime();
+        HienThiThuNhaphomnay();
         LoaiPhongks();
         tinhtrangphong();
 
         HienDataLenBang();
         hiendatalentable();
         roomsearch();
+
+        customersearch1();
         HienDataLenBang();
         hiendatalentable();
+        FilteredList<roomData> filter2 =  new FilteredList<>(roomDatalist, b->true);
+        NhapTT_search.textProperty().addListener(((observableValue, s1, t2) -> {
+            filter2.setPredicate(predick1->{
+                System.out.println(s1+"ben trong");
+                System.out.println(t2+"ben trong");
+                if(t2==null&&s1.isEmpty()){
+                    return true;
+                }
+                String searchkey1= t2.toLowerCase();
+                if(predick1.getPhongso().toString().indexOf(searchkey1)!=-1){
+                    return true;
+                } else if (predick1.getLoaiPhong().contains(searchkey1)) {
+                    return true;
+
+                } else if (predick1.getTinhTrang().toLowerCase().contains(searchkey1)) {
+                    return true;
+                } else if (predick1.getThanhTien().toString().contains(searchkey1)) {
+                    return true;
+                }else return false;
+
+            });
+        }));
+
+        SortedList<roomData> sortedList2= new SortedList<>(filter2);
+        sortedList2.comparatorProperty().bind(NhapTT_table.comparatorProperty());
+        NhapTT_table.setItems(sortedList2);
+
 
 
         // search ben roomm
+        FilteredList<custommer_data> filter3 =  new FilteredList<>(listcd, b->true);
+        KH_search_khachhang.textProperty().addListener(((observableValue, s1, t2) -> {
+            filter3.setPredicate(predick1->{
+                System.out.println(s1);
+                System.out.println(t2);
+                if(t2==null&&s1.isEmpty()){
+                    return true;
+                }
+                String searchkey1= t2.toLowerCase();
+                if(predick1.getMakhach().toString().indexOf(searchkey1)!=-1){
+                    return true;
+                } else if (predick1.getHoten().indexOf(searchkey1)!=-1) {
+                    return true;
+
+                } else if (predick1.getSdt().toLowerCase().contains(searchkey1)) {
+                    return true;
+                } else if (predick1.getVao1().toString().contains(searchkey1)) {
+                    return true;
+                }else return false;
+
+            });
+        }));
+
+        SortedList<custommer_data> sortedList3= new SortedList<>(filter3);
+        sortedList3.comparatorProperty().bind(KH_table_khachHang.comparatorProperty());
+        KH_table_khachHang.setItems(sortedList3);
 
 
         logout.setOnAction(new EventHandler<ActionEvent>() {
@@ -532,8 +620,23 @@ public class main_dashboard_controller implements Initializable {
         KH_cot_chekcin.setCellValueFactory(new PropertyValueFactory<>("vao1"));
         KH_cot_checkout.setCellValueFactory(new PropertyValueFactory<>("ra1"));
         KH_table_khachHang.setItems(listcd);
-
-
+    }
+    public void countbooktoday(){
+        Date date= new Date();
+        java.sql.Date sqldate=new java.sql.Date(date.getTime());
+        String sql ="SELECT COUNT(id) FROM  custommer WHERE vao='"+sqldate+"'";
+        connect= database_connect.connectDatabase();
+        int count=0;
+        try {
+            preparedStatement= connect.prepareStatement(sql);
+            resultSet=preparedStatement.executeQuery();
+            while (resultSet.next()){
+                count=resultSet.getInt("COUNT(id)");
+            }
+            BDK_SoPhongBook.setText(String.valueOf(count));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
     }
 
@@ -542,13 +645,18 @@ public class main_dashboard_controller implements Initializable {
             bangdieukhienPanel.setVisible(true);
             NhapTT_Panel.setVisible(false);
             KH_panel.setVisible(false);
+            daboardchart();
+            HienThiThuNhaphomnay();
+            countbooktoday();
+            HienThiThuNhapAllTime();
             
         } else if (event.getSource()==PhongTrong_BTN) {
             bangdieukhienPanel.setVisible(false);
             NhapTT_Panel.setVisible(true);
             KH_panel.setVisible(false);
-            roomsearch();
+
             HienDataLenBang();
+            roomsearch();
 
 
             
@@ -557,8 +665,63 @@ public class main_dashboard_controller implements Initializable {
             NhapTT_Panel.setVisible(false);
             KH_panel.setVisible(true);
             hiendatalentable();
+            customersearch1();
         }
 
     }
+    double tongthunhaphomnay=0;
+    public void thunhaphomnay(){
+        java.util.Date date= new Date();
+        java.sql.Date datesql= new java.sql.Date(date.getTime());
+        String sql="SELECT SUM(total) FROM customer_hoadon WHERE date1='"+datesql+"'";
+        connect=database_connect.connectDatabase();
+        try {
+            preparedStatement=connect.prepareStatement(sql);
+            resultSet=preparedStatement.executeQuery();
+            while (resultSet.next()){
+                tongthunhaphomnay=resultSet.getDouble("SUM(total)");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+    public void HienThiThuNhaphomnay(){
+        thunhaphomnay();
+        BDK_ThuNhapHomNay.setText(String.valueOf(tongthunhaphomnay));
+    }
+    double incomeAllTime=0;
+    public void TongThuNhapToanThoiGian(){
+        String sql="SELECT SUM(total) FROM customer_hoadon";
+        connect=database_connect.connectDatabase();
+        try {
+            preparedStatement=connect.prepareStatement(sql);
+            resultSet=preparedStatement.executeQuery();
+            while (resultSet.next()){
+                incomeAllTime=resultSet.getDouble("SUM(total)");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+    public void HienThiThuNhapAllTime(){
+        TongThuNhapToanThoiGian();
+        BDK_TongThuNhap.setText(String.valueOf(incomeAllTime));
+    }
+    public void daboardchart(){
+        BDK_chart.getData().clear();
+        String sql="SELECT date1,total FROM customer_hoadon GROUP BY date1 ORDER BY TIMESTAMP(date1) ASC LIMIT 10";
+        connect= database_connect.connectDatabase();
+        XYChart.Series chart = new XYChart.Series();
+        try {
+            preparedStatement= connect.prepareStatement(sql);
+            resultSet=preparedStatement.executeQuery();
+            while (resultSet.next()){
+                chart.getData().add(new XYChart.Data(resultSet.getString(1),resultSet.getDouble(2)));
+            }
+            BDK_chart.getData().add(chart);
 
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 }
