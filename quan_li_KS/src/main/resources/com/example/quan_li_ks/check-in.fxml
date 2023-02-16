@@ -93,10 +93,10 @@
                                        </font>
                                     </Label>
                                     <DatePicker fx:id="checkin_ngayvao" layoutX="34.0" layoutY="408.0" prefHeight="31.0" prefWidth="190.0" promptText="MM-DD-YY" />
-                                    <DatePicker fx:id="checkin_ngayra" layoutX="264.0" layoutY="408.0" prefHeight="31.0" prefWidth="190.0" promptText="MM-DD-YY" />
+                                    <DatePicker fx:id="checkin_ngayra" layoutX="264.0" layoutY="408.0" onAction="#tongNgay" prefHeight="31.0" prefWidth="190.0" promptText="MM-DD-YY" />
                                     <Button fx:id="checkin_btn_reset" layoutX="36.0" layoutY="557.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="78.0" styleClass="checkin-btn" stylesheets="@style_home.css" text="Reset" />
                                     <Button fx:id="checkin_btn_inhoadon" layoutX="253.0" layoutY="557.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="87.0" styleClass="checkin-btn" stylesheets="@style_home.css" text="In hóa đơn " />
-                                    <Button fx:id="checkin_btn_checkin" layoutX="361.0" layoutY="557.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="87.0" styleClass="checkin-btn" stylesheets="@style_home.css" text="Check-in" />
+                                    <Button fx:id="checkin_btn_checkin" layoutX="361.0" layoutY="557.0" mnemonicParsing="false" onAction="#customercheckIn" prefHeight="32.0" prefWidth="87.0" styleClass="checkin-btn" stylesheets="@style_home.css" text="Check-in" />
                                     <Label layoutX="161.0" layoutY="498.0" text="Tổng hóa đơn :" textFill="WHITE">
                                        <font>
                                           <Font name="Roboto Medium" size="15.0" />
@@ -127,8 +127,8 @@
                                           <Font name="Roboto Medium" size="15.0" />
                                        </font>
                                     </Label>
-                                    <ComboBox fx:id="checkin_loaiphong" layoutX="35.0" layoutY="289.0" onAction="#danhsachcacphong" prefHeight="26.0" prefWidth="187.0" />
-                                    <ComboBox fx:id="checkin_sophong" layoutX="264.0" layoutY="289.0" prefHeight="26.0" prefWidth="187.0" />
+                                    <ComboBox fx:id="checkin_loaiphong" layoutX="35.0" layoutY="289.0" onAction="#danhsachcacphong" onContextMenuRequested="#ediabke" onMouseClicked="#ediabke" prefHeight="26.0" prefWidth="187.0" promptText="chon" />
+                                    <ComboBox fx:id="checkin_sophong" disable="true" layoutX="264.0" layoutY="289.0" prefHeight="26.0" prefWidth="187.0" promptText="chon" />
                                  </children>
                               </AnchorPane>
                            </children>

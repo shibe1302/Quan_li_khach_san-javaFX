@@ -1,7 +1,11 @@
 package com.example.quan_li_ks;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -25,6 +29,8 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class main_dashboard_controller implements Initializable {
+    public main_dashboard_controller() {
+    }
 
     double x=0;
     double y=0;
@@ -45,22 +51,22 @@ public class main_dashboard_controller implements Initializable {
     private Button BangDieuKHien_BTN;
 
     @FXML
-    private TableColumn<?, ?> KH_cot_checkout;
+    private TableColumn<custommer_data, String> KH_cot_checkout;
 
     @FXML
-    private TableColumn<?, ?> KH_cot_chekcin;
+    private TableColumn<custommer_data, String> KH_cot_chekcin;
 
     @FXML
-    private TableColumn<?, ?> KH_cot_hovaten;
+    private TableColumn<custommer_data, String> KH_cot_hovaten;
 
     @FXML
-    private TableColumn<?, ?> KH_cot_khachHang;
+    private TableColumn<custommer_data, String> KH_cot_khachHang;
 
     @FXML
-    private TableColumn<?, ?> KH_cot_sodienthoai;
+    private TableColumn<custommer_data, String> KH_cot_sodienthoai;
 
     @FXML
-    private TableColumn<?, ?> KH_cot_thanhtoan;
+    private TableColumn<custommer_data, String> KH_cot_thanhtoan;
 
     @FXML
     private AnchorPane KH_panel;
@@ -69,7 +75,7 @@ public class main_dashboard_controller implements Initializable {
     private TextField KH_search_khachhang;
 
     @FXML
-    private TableView<?> KH_table_khachHang;
+    private TableView<custommer_data> KH_table_khachHang;
 
     @FXML
     private Button KhachHang_BTN;
@@ -226,7 +232,7 @@ public class main_dashboard_controller implements Initializable {
         ObservableList<String> list1= FXCollections.observableList(listdata);
         NhapTT_LoaiPhong.setItems(list1);
     }
-    private String type2[]={"Phòng trống", "Đang bảo trì", "Có ma ám", "Đã được đặt trước"};
+    private String type2[]={"Phòng trống", "Đang bảo trì", "Có ma ám", "Đã được đặt"};
     public void tinhtrangphong(){
         List<String> listdata1= new ArrayList<>();
         for (String data: type2) {
@@ -256,7 +262,7 @@ public class main_dashboard_controller implements Initializable {
     }
 
     private ObservableList<roomData> roomDatalist;
-    public void HienDataLenBang(){
+    public  void HienDataLenBang(){
         roomDatalist=phongSanCodataTable();
         NhapTT_cot_phong.setCellValueFactory(new PropertyValueFactory<>("phongso"));
         NhapTT_cot_loaiPhong.setCellValueFactory(new PropertyValueFactory<>("LoaiPhong"));
@@ -415,27 +421,52 @@ public class main_dashboard_controller implements Initializable {
         }
     }
 
+    public void roomsearch(){
+        FilteredList<roomData> filter2 =  new FilteredList<>(roomDatalist, b->true);
+        NhapTT_search.textProperty().addListener(((observableValue, s1, t2) -> {
+            filter2.setPredicate(predick1->{
+                System.out.println(s1);
+                System.out.println(t2);
+                if(t2==null&&s1.isEmpty()){
+                    return true;
+                }
+                String searchkey1= t2.toLowerCase();
+                if(predick1.getPhongso().toString().indexOf(searchkey1)!=-1){
+                    return true;
+                } else if (predick1.getLoaiPhong().contains(searchkey1)) {
+                    return true;
 
+                } else if (predick1.getTinhTrang().toLowerCase().contains(searchkey1)) {
+                    return true;
+                } else if (predick1.getThanhTien().toString().contains(searchkey1)) {
+                    return true;
+                }else return false;
 
+            });
+        }));
 
-
-
-
-
-
-
-
-
+        SortedList<roomData> sortedList2= new SortedList<>(filter2);
+        sortedList2.comparatorProperty().bind(NhapTT_table.comparatorProperty());
+        NhapTT_table.setItems(sortedList2);
+    }
 
 
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         LoaiPhongks();
         tinhtrangphong();
-        HienDataLenBang();
 
+        HienDataLenBang();
+        hiendatalentable();
+        roomsearch();
+        HienDataLenBang();
+        hiendatalentable();
+
+
+        // search ben roomm
 
 
         logout.setOnAction(new EventHandler<ActionEvent>() {
@@ -463,6 +494,71 @@ public class main_dashboard_controller implements Initializable {
         NhapTT_phongSo.setText(String.valueOf(roomData1.getPhongso()));
         NhapTT_thanhtien.setText(String.valueOf(roomData1.getThanhTien()));
     }
+    public  ObservableList<custommer_data> custommer_data1(){
+        ObservableList<custommer_data> listdata= FXCollections.observableArrayList();
+        String sql="SELECT * FROM custommer";
+        connect=database_connect.connectDatabase();
+        try{
+            preparedStatement= connect.prepareStatement(sql);
+            resultSet=preparedStatement.executeQuery();
+            custommer_data cd;
+            while (resultSet.next()){
+                String hoten=resultSet.getString("ho");
+                hoten+=" ";
+                hoten+=resultSet.getString("ten");
+                cd=new custommer_data(resultSet.getInt("customer_ID")
+                        ,hoten
+                        ,resultSet.getString("sdt")
+                        ,resultSet.getDouble("hoadon")
+                        ,resultSet.getDate("vao")
+                        ,resultSet.getDate("ra"));
+                listdata.add(cd);
+                System.out.println(String.valueOf(resultSet.getDouble("hoadon")));
+            }
 
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return listdata;
+    }
+    private ObservableList<custommer_data> listcd;
+    public void hiendatalentable(){
+        listcd=custommer_data1();
+        KH_cot_khachHang.setCellValueFactory(new PropertyValueFactory<>("makhach"));
+        KH_cot_hovaten.setCellValueFactory(new PropertyValueFactory<>("hoten"));
+        KH_cot_sodienthoai.setCellValueFactory(new PropertyValueFactory<>("sdt"));
+        KH_cot_thanhtoan.setCellValueFactory(new PropertyValueFactory<>("total"));
+        KH_cot_chekcin.setCellValueFactory(new PropertyValueFactory<>("vao1"));
+        KH_cot_checkout.setCellValueFactory(new PropertyValueFactory<>("ra1"));
+        KH_table_khachHang.setItems(listcd);
+
+
+
+    }
+
+    public void switchform(ActionEvent event){
+        if(event.getSource()==BangDieuKHien_BTN){
+            bangdieukhienPanel.setVisible(true);
+            NhapTT_Panel.setVisible(false);
+            KH_panel.setVisible(false);
+            
+        } else if (event.getSource()==PhongTrong_BTN) {
+            bangdieukhienPanel.setVisible(false);
+            NhapTT_Panel.setVisible(true);
+            KH_panel.setVisible(false);
+            roomsearch();
+            HienDataLenBang();
+
+
+            
+        } else if (event.getSource()==KhachHang_BTN) {
+            bangdieukhienPanel.setVisible(false);
+            NhapTT_Panel.setVisible(false);
+            KH_panel.setVisible(true);
+            hiendatalentable();
+        }
+
+    }
 
 }

@@ -161,9 +161,12 @@
 
 
 }
+
 .table-view .table-cell{
--fx-border-width: 0px 10px 0px 0px;
-     -fx-border-weight: 1px;
+
+     -fx-border-weight: 0.2px;
+     -fx-border-color: #182938;
+     -fx-border-insets: 0 -1 0 -1;
 
 
     -fx-padding: 2 0 2 10px;
@@ -221,3 +224,11 @@
 
 
 }
+.table-row-cell:filled:selected {
+    -fx-border-color: red;
+    -fx-border-insets: 0 -1 0 -1;
+}
+#cc .table-column {
+  -fx-alignment: CENTER;
+}
+
