@@ -157,7 +157,7 @@ public class chekcin_controller implements Initializable {
 
 
     public void customercheckIn() {
-        String insertCustomerdata = "INSERT INTO custommer  (customer_ID,hoadon, loaiphong, sophong, ho, ten, sdt, email, vao, ra)  VALUES (?,?, ?, ?, ? ,?, ?, ?,?,?)";
+        String insertCustomerdata = "INSERT INTO custommer (customer_ID, hoadon, loaiphong, sophong, ho, ten, sdt, email, vao, ra) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         connect = database_connect.connectDatabase();
         try {
             String customernum = checkin_number.getText();
@@ -172,7 +172,7 @@ public class chekcin_controller implements Initializable {
             String ra1 = String.valueOf(checkin_ngayra.getValue());
             Alert alert;
 
-            if (customernum == null || ho1 == null || ten1 == null || sdt1 == null || mail == null || vao1 == null || ra1 == null) {
+            if (customernum == null || ho1 == null || ten1 == null || sdt1 == null || mail == null || vao1 == null || ra1 == null||total==null) {
                 alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Lỗi !");
                 alert.setContentText("Vui lòng nhập đầy đủ thông tin !");
@@ -188,7 +188,7 @@ public class chekcin_controller implements Initializable {
                 if(optional.get().equals(ButtonType.OK)){
                     prepare = connect.prepareStatement(insertCustomerdata);
                     prepare.setString(1, customernum);
-                    prepare.setString(2,total);
+                    prepare.setString(2, String.valueOf(tt));
                     prepare.setString(3, loai);
                     prepare.setString(4, so);
                     prepare.setString(5, ho1);
